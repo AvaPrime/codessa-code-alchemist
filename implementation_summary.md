@@ -336,11 +336,12 @@ $project = gh api graphql -f query="$createProject" --jq '.data.createProjectV2.
 3. **Automated Scanning:** 
    - Dependency vulnerabilities (Trivy, Safety, npm audit)
    - SAST (Bandit, CodeQL)
-   - Secret scanning (planned - add detect-secrets to CI)
+   - Secret scanning (detect-secrets in CI)
 4. **Review Gate:** Extended review for risky changes
 
 ### Pending Security Tasks
-- [ ] Add `detect-secrets` to CI workflow
+- [x] Add `detect-secrets` to CI workflow
+  - CI job `detect-secrets` added; fails on findings
 - [ ] Configure GitHub Advanced Security (if available)
 - [ ] Add secrets scanning to pre-commit hooks
 - [ ] Create security incident response runbook

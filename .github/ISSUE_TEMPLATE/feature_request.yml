@@ -1,0 +1,54 @@
+name: Feature request
+description: Propose a new capability or enhancement
+title: "Add: <feature> - <context>"
+labels:
+  - type: feature
+  - priority: high
+  - component: backend
+body:
+  - type: textarea
+    id: business
+    attributes:
+      label: Business Justification
+      placeholder: Why this matters (outcome, user value, ROI)
+    validations:
+      required: true
+  - type: textarea
+    id: technical
+    attributes:
+      label: Technical Context
+      placeholder: Architecture fit, dependencies, risks
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - Functional behavior defined
+        - Coverage ≥ 80%
+        - Performance/SLO targets met
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Success Metrics
+      placeholder: KPI improvements, latency targets, error budgets
+    validations:
+      required: true
+  - type: input
+    id: effort
+    attributes:
+      label: Effort Estimate
+      placeholder: e.g., 8 story points or 16 hours
+    validations:
+      required: false
+  - type: input
+    id: milestone
+    attributes:
+      label: Target Milestone
+      placeholder: e.g., Validation & Readiness
+    validations:
+      required: false
+

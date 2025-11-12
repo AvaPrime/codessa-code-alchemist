@@ -1,0 +1,47 @@
+name: Documentation
+description: Update or add documentation and diagrams
+title: "Document: <topic> - <context>"
+labels:
+  - type: documentation
+  - priority: medium
+  - component: infrastructure
+body:
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      placeholder: What documentation needs updating/adding
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      placeholder: Files, sections, cross-references
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - Sections complete and consistent
+        - Linked in README/architecture
+        - Reviewed by domain owner
+    validations:
+      required: true
+  - type: input
+    id: effort
+    attributes:
+      label: Effort Estimate
+      placeholder: e.g., 3 story points or 6 hours
+    validations:
+      required: false
+  - type: input
+    id: milestone
+    attributes:
+      label: Target Milestone
+      placeholder: e.g., Validation & Readiness
+    validations:
+      required: false
+

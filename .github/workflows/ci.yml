@@ -143,9 +143,41 @@ jobs:
           fail-on-findings: true
         continue-on-error: true
 
+  detect-secrets:
+    name: detect-secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install detect-secrets
+        run: |
+          python -m pip install --upgrade pip
+          pip install detect-secrets
+      - name: Run detect-secrets scan (fail on findings)
+        run: |
+          detect-secrets scan --all-files --force | tee detect-secrets.json
+          if command -v jq >/dev/null 2>&1; then
+            COUNT=$(jq '(.results|to_entries|map(.value|length)|add)//0' detect-secrets.json)
+          else
+            COUNT=$(python - <<'PY'
+import json,sys
+data=json.load(open('detect-secrets.json'))
+results=data.get('results',{})
+print(sum(len(v) for v in results.values()))
+PY
+)
+          fi
+          echo "Potential secrets found: $COUNT"
+          if [ "$COUNT" -gt 0 ]; then
+            echo "Secrets detected by detect-secrets scan"
+            exit 1
+          fi
+
   notify:
     name: notify
-    needs: [python-tests, node-tests, lint-python, lint-node, static-analysis, security-scan]
+    needs: [python-tests, node-tests, lint-python, lint-node, static-analysis, security-scan, detect-secrets]
     runs-on: ubuntu-latest
     if: failure()
     steps:
@@ -159,4 +191,3 @@ jobs:
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-

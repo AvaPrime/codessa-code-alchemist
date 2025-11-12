@@ -1,0 +1,43 @@
+name: Task
+description: Track a technical task or chore
+title: "Do: <task> - <context>"
+labels:
+  - priority: medium
+  - component: infrastructure
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Clear definition of the task
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: Concrete completion checks
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      placeholder: Blocks / is blocked by
+    validations:
+      required: false
+  - type: input
+    id: effort
+    attributes:
+      label: Effort Estimate
+      placeholder: e.g., 2 story points or 4 hours
+    validations:
+      required: false
+  - type: input
+    id: milestone
+    attributes:
+      label: Target Milestone
+      placeholder: e.g., Validation & Readiness
+    validations:
+      required: false
+

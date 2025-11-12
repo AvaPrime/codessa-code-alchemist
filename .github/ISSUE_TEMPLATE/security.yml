@@ -1,0 +1,47 @@
+name: Security
+description: Track a security or compliance item
+title: "Secure: <area> - <context>"
+labels:
+  - security
+  - priority: critical
+  - component: infrastructure
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      placeholder: Threat model, controls, systems impacted
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      placeholder: |
+        - Control implemented and verified
+        - Tests for failure modes
+        - Audit trail established
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Success Metrics
+      placeholder: Risk reduction, coverage, remediation time
+    validations:
+      required: true
+  - type: input
+    id: effort
+    attributes:
+      label: Effort Estimate
+      placeholder: e.g., 5 story points or 10 hours
+    validations:
+      required: false
+  - type: input
+    id: milestone
+    attributes:
+      label: Target Milestone
+      placeholder: e.g., Validation & Readiness
+    validations:
+      required: false
+

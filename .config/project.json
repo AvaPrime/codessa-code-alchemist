@@ -1,0 +1,11 @@
+{
+  "project_title": "Validation & Governance",
+  "project_url": null,
+  "project_id": null,
+  "status": "pending",
+  "last_attempt_at": "2025-11-12T11:23:14+02:00",
+  "notes": [
+    "GitHub token lacks required Projects scopes (read:project, project)",
+    "Script will succeed once scopes are granted or board is created manually"
+  ]
+}

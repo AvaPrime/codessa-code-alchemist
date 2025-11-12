@@ -27,7 +27,7 @@ if ($viewer.data.viewer.login -ne $Owner) {
 }
 
 # 2) Get owner ID and existing projects
-$ownerQuery = @" 
+$ownerQuery = @'
 query($login: String!) {
   user(login: $login) {
     id
@@ -36,20 +36,20 @@ query($login: String!) {
     }
   }
 }
-"@
+'@
 $ownerData = gh api graphql -f query="$ownerQuery" -F login=$Owner | ConvertFrom-Json
 $userId = $ownerData.data.user.id
 $existing = $ownerData.data.user.projectsV2.nodes | Where-Object { $_.title -eq $ProjectTitle }
 
 if (-not $existing) {
   Write-Host "Creating project '$ProjectTitle' for owner '$Owner'..."
-  $createProject = @" 
+$createProject = @' 
   mutation($ownerId: ID!, $title: String!) {
     createProjectV2(input: { ownerId: $ownerId, title: $title }) {
       projectV2 { id title number url }
     }
   }
-"@
+'@
   $projRes = gh api graphql -f query="$createProject" -F ownerId=$userId -F title=$ProjectTitle | ConvertFrom-Json
   $project = $projRes.data.createProjectV2.projectV2
 } else {
@@ -61,7 +61,7 @@ Write-Host "Project Number: $($project.number)"
 Write-Host "Project URL:     $($project.url)"
 
 # 3) Ensure 'Status' single-select field with options
-$fieldsQuery = @" 
+$fieldsQuery = @' 
 query($projectId: ID!) {
   node(id: $projectId) {
     ... on ProjectV2 {
@@ -77,24 +77,24 @@ query($projectId: ID!) {
     }
   }
 }
-"@
+'@
 $fieldsData = gh api graphql -f query="$fieldsQuery" -F projectId=$($project.id) | ConvertFrom-Json
 $fields = $fieldsData.data.node.fields.nodes
 $statusField = $fields | Where-Object { $_.name -eq 'Status' }
 
 if (-not $statusField) {
   Write-Host "Adding 'Status' field..."
-  $addField = @" 
+$addField = @' 
   mutation($projectId: ID!) {
     addProjectV2Field(input: { projectId: $projectId, name: "Status", dataType: SINGLE_SELECT }) {
       projectV2Field { id }
     }
   }
-"@
+'@
   $addFieldRes = gh api graphql -f query="$addField" -F projectId=$($project.id) | ConvertFrom-Json
   $statusFieldId = $addFieldRes.data.addProjectV2Field.projectV2Field.id
   # Set options
-  $setOptions = @" 
+$setOptions = @' 
   mutation($projectId: ID!, $fieldId: ID!) {
     updateProjectV2SingleSelectField(input: {
       projectId: $projectId,
@@ -106,7 +106,7 @@ if (-not $statusField) {
       ]
     }) { projectV2SingleSelectField { id options { id name } } }
   }
-"@
+'@
   $optRes = gh api graphql -f query="$setOptions" -F projectId=$($project.id) -F fieldId=$statusFieldId | ConvertFrom-Json
   $statusField = $optRes.data.updateProjectV2SingleSelectField.projectV2SingleSelectField
 } else {
@@ -119,7 +119,7 @@ if (-not $backlogOption) {
 }
 
 # 4) Get open issues in milestone 'Validation & Readiness'
-$issuesQuery = @" 
+$issuesQuery = @' 
 query($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     id
@@ -128,7 +128,7 @@ query($owner: String!, $name: String!) {
     }
   }
 }
-"@
+'@
 $repoParts = $Repo.Split('/')
 $issuesData = gh api graphql -f query="$issuesQuery" -F owner=$($repoParts[0]) -F name=$($repoParts[1]) | ConvertFrom-Json
 $allIssues = $issuesData.data.repository.issues.nodes
@@ -142,17 +142,17 @@ if (-not $milestoneIssues) {
 # 5) Add each issue to project and set Status=Backlog
 foreach ($issue in $milestoneIssues) {
   Write-Host "Adding issue #$($issue.number): $($issue.title)"
-  $addItem = @" 
+$addItem = @' 
   mutation($projectId: ID!, $contentId: ID!) {
     addProjectV2ItemById(input: { projectId: $projectId, contentId: $contentId }) {
       item { id }
     }
   }
-"@
+'@
   $addItemRes = gh api graphql -f query="$addItem" -F projectId=$($project.id) -F contentId=$($issue.id) | ConvertFrom-Json
   $itemId = $addItemRes.data.addProjectV2ItemById.item.id
 
-  $setField = @" 
+$setField = @' 
   mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
     updateProjectV2ItemFieldValue(input: {
       projectId: $projectId,
@@ -161,7 +161,7 @@ foreach ($issue in $milestoneIssues) {
       value: { singleSelectOptionId: $optionId }
     }) { projectV2Item { id } }
   }
-"@
+'@
   gh api graphql -f query="$setField" -F projectId=$($project.id) -F itemId=$itemId -F fieldId=$statusFieldId -F optionId=$($backlogOption.id) | Out-Null
 }
 

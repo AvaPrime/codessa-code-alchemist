@@ -1,0 +1,80 @@
+# ===== Environment & Secrets =====
+# Local environment variable files and virtual environments
+.env
+.env.*
+.env.local
+.venv/
+venv/
+
+# ===== Python Dependencies & Caches =====
+# Python bytecode, caches, and dependency artifacts
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+
+# ===== Node.js Dependencies =====
+# Node package directories and lockfile artifacts
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===== Build Artifacts =====
+# Compiled outputs and distribution packages
+dist/
+build/
+out/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+
+# ===== IDE & Editor Files =====
+# Editor and IDE configuration and temporary files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ===== System Files =====
+# OS-generated files that should not be versioned
+.DS_Store
+Thumbs.db
+
+# ===== Logs & Temporary Files =====
+# Application logs and temporary runtime files
+logs/
+*.log
+coverage/
+coverage.xml
+lcov.info
+tmp/
+.tmp/
+
+# ===== Testing & Reports =====
+# Test outputs and coverage reports
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+test-results/
+
+# ===== Misc Tooling =====
+# Common tool state directories
+.cache/
+.terraform/
+.serverless/
+.docusaurus/
+.expo/
+
+# ===== Local Overrides =====
+# Files for local-only configuration
+local.settings.json
+*.local.json
+

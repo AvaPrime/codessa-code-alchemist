@@ -1,0 +1,80 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-production:
+    name: build-production
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm ci || npm install
+          else
+            echo "No Node project; skipping build"
+          fi
+      - name: Production build
+        run: |
+          if [ -f package.json ] && npm run | grep -q "build"; then
+            npm run build
+          else
+            echo "No build script defined; passing"
+          fi
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+          path: |
+            dist
+            build
+          if-no-files-found: warn
+          retention-days: 30
+
+  deploy-staging:
+    name: deploy-staging
+    runs-on: ubuntu-latest
+    needs: build-production
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - name: Determine deploy capability
+        id: cfg
+        run: |
+          if [ -n "${{ secrets.STAGING_DEPLOY_URL }}" ]; then
+            echo "can_deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "can_deploy=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-${{ github.sha }}
+        if: ${{ steps.cfg.outputs.can_deploy == 'true' }}
+      - name: Deploy to staging
+        if: ${{ steps.cfg.outputs.can_deploy == 'true' }}
+        run: |
+          echo "Deploying to ${{ secrets.STAGING_DEPLOY_URL }}"
+          # Implement deployment logic here (ssh/rsync/k8s/ecs)
+      - name: No staging deployment configured
+        if: ${{ steps.cfg.outputs.can_deploy != 'true' }}
+        run: |
+          echo "Staging deployment not configured; skipping"
+      - name: Notify Slack on deployment status
+        if: ${{ secrets.SLACK_WEBHOOK_URL != '' }}
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload: |
+            {
+              "text": "Build & Deploy completed for ${{ github.repository }} on ${{ github.ref }} (run ${{ github.run_id }})"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+

@@ -1,0 +1,108 @@
+﻿Task Name,Actual Hours,Dependencies,Due Date,Estimated Hours,Notes,Owner,Phase,Priority,Status,Week
+Bug fixes from testing,,Testing complete,,8,,,Phase 1,High,Not Started,4
+SecurityAgent implementation (OpenAI),,BaseAgent class,,10,,,Phase 1,High,Not Started,3
+Model selection algorithm,,Cost tracking,,8,,,Phase 2,Medium,Not Started,6
+API documentation (OpenAPI),,API stable,,6,,,Phase 1,Medium,Not Started,4
+Fallback chain implementation,,Multiple providers,,8,,,Phase 2,High,Not Started,6
+CI/CD pipeline (GitHub Actions),,GitHub repository setup,,8,,,Phase 1,High,Not Started,1
+AWS account setup with billing alerts,,Phase 0 complete,,4,"Set up billing alerts at $100, $500, $1000",,Phase 1,Critical,Not Started,1
+OpenRouter integration,,Model gateway,,10,,,Phase 2,Critical,Not Started,6
+ReadabilityAgent implementation (Anthropic),,BaseAgent class,,10,,,Phase 1,High,Not Started,3
+FastAPI application scaffold,,Week 1 complete,,8,,,Phase 1,Critical,Not Started,2
+Cost tracking per review,,OpenRouter,,6,,,Phase 2,Medium,Not Started,6
+Load testing (10 concurrent users),,Staging deployed,,6,,,Phase 1,Medium,Not Started,4
+Add PerformanceAgent (Gemini),,BaseAgent,,10,,,Phase 2,High,Not Started,5
+Initial user testing (5-10 reviews),,Prompt engineering,,16,,,Phase 0,High,Not Started,0
+Developer setup guide,,Documentation,,4,,,Phase 1,Low,Not Started,4
+Concept validation,,None,,10,Initial concept and validation,,Phase 0,Critical,Completed,0
+BaseAgent abstract class,,Orchestrator,,8,,,Phase 1,High,Not Started,3
+Mission & Vision document,,Concept validation,,8,,,Phase 0,High,Completed,0
+"Database models (Users, Reviews)",,PostgreSQL deployed,,6,,,Phase 1,High,Not Started,2
+Redis ElastiCache deployment,,VPC configuration,,4,,,Phase 1,High,Not Started,1
+GitHub repository setup,,None,,3,,,Phase 1,High,Not Started,1
+Unified diff generation,,Aggregation complete,,8,,,Phase 2,High,Not Started,7
+Celery worker setup,,Redis deployed,,6,,,Phase 1,High,Not Started,3
+Conflict resolution rules,,Confidence scoring,,8,,,Phase 2,Medium,Not Started,5
+PostgreSQL RDS deployment (db.t3.small),,VPC configuration,,6,,,Phase 1,Critical,Not Started,1
+AWS Secrets Manager configuration,,AWS account setup,,4,,,Phase 1,High,Not Started,1
+JWT authentication implementation,,FastAPI scaffold,,8,,,Phase 1,High,Not Started,2
+Confidence scoring algorithm,,Aggregation logic,,8,,,Phase 2,High,Not Started,5
+Staging environment deployment,,Tests passing,,8,,,Phase 1,Critical,Not Started,4
+Parallel agent execution (asyncio),,Phase 1 complete,,12,,,Phase 2,Critical,Not Started,5
+All model providers configured,,OpenRouter,,8,,,Phase 2,High,Not Started,6
+Orchestrator service implementation,,Week 2 API,,12,,,Phase 1,Critical,Not Started,3
+/auth/login and /auth/signup endpoints,,JWT authentication,,6,,,Phase 1,High,Not Started,2
+Development environment deployed,,Infrastructure ready,,6,,,Phase 1,Medium,Not Started,2
+/reviews POST endpoint (basic),,FastAPI scaffold,,8,,,Phase 1,Critical,Not Started,2
+Add TestGeneratorAgent (GPT-5),,BaseAgent,,10,,,Phase 2,High,Not Started,5
+Integration tests (5 key flows),,Week 3 complete,,10,,,Phase 1,High,Not Started,4
+Postman/Thunder Client collection,,API endpoints,,3,,,Phase 1,Low,Not Started,2
+Rate limiting per provider,,Multiple providers,,6,,,Phase 2,Medium,Not Started,6
+Redis queue configuration,,Celery setup,,4,,,Phase 1,Medium,Not Started,3
+Cost analysis validation,,User testing,,8,,,Phase 0,Medium,Not Started,0
+VPC configuration (public + private subnets),,AWS account setup,,6,,,Phase 1,High,Not Started,1
+Google AI Studio prompt engineering,,Technical Architecture,,20,,,Phase 0,Critical,In Progress,0
+Result aggregation logic,,Parallel execution,,10,,,Phase 2,High,Not Started,5
+Request validation with Pydantic,,FastAPI scaffold,,4,,,Phase 1,Medium,Not Started,2
+Model gateway abstraction layer,,None,,10,,,Phase 1,Critical,Not Started,3
+Technical Architecture,,PRD,,16,,,Phase 0,High,Completed,0
+Basic result aggregation logic,,Agents implemented,,8,,,Phase 1,Medium,Not Started,3
+Unit tests (50% coverage minimum),,Week 3 complete,,12,,,Phase 1,High,Not Started,4
+Product Requirements Document,,Mission & Vision,,12,,,Phase 0,High,Completed,0
+Generate embeddings backfill,,Import complete,,8,,,Phase 3,Low,Not Started,12
+Feature flags for multi-agent,,Phase 2 features,,6,,,Phase 2,High,Not Started,8
+Grafana dashboards (5 key views),,Tracing,,10,,,Phase 4,High,Not Started,13
+PagerDuty integration,,Grafana,,4,,,Phase 4,High,Not Started,13
+Publish to VSCode Marketplace,,Extension complete,,6,,,Phase 3,Medium,Not Started,11
+Error handling for API limits (Notion),,Sync working,,4,,,Phase 3,Medium,Not Started,9
+PR comment bot,,GitHub App,,10,,,Phase 3,High,Not Started,10
+CDN configuration,,Multi-region,,6,,,Phase 4,Medium,Not Started,15
+Database schema mapping (Notion),,Notion client,,6,,,Phase 3,High,Not Started,9
+VSCode extension scaffold,,None,,12,,,Phase 3,High,Not Started,11
+Alert rules (10 critical alerts),,PagerDuty,,6,,,Phase 4,High,Not Started,13
+Secrets rotation automation,,Security audit,,6,,,Phase 4,High,Not Started,14
+Copy-paste workflow (VSCode),,Review command,,6,,,Phase 3,Medium,Not Started,11
+Security sign-off,,Security audit complete,,4,,,Phase 4,Critical,Not Started,16
+DDoS protection (Cloudflare),,None,,4,,,Phase 4,High,Not Started,14
+GitHub Action workflow,,GitHub App,,8,,,Phase 3,High,Not Started,10
+Import to PostgreSQL,,Export complete,,6,,,Phase 3,Medium,Not Started,12
+A/B test setup (single vs multi),,Feature flags,,8,,,Phase 2,High,Not Started,8
+Staged rollout (10% → 50% → 100%),,All tests passed,,12,,,Phase 4,Critical,Not Started,16
+Commit message generation,,GitHub App,,4,,,Phase 3,Low,Not Started,10
+Issue creation for findings,,GitHub App,,6,,,Phase 3,Medium,Not Started,10
+EU region deployment,,Infrastructure ready,,12,,,Phase 4,High,Not Started,15
+Review history tracking,,Sync working,,6,,,Phase 3,Medium,Not Started,9
+Security audit report,,Pen testing,,8,,,Phase 4,Critical,Not Started,14
+Runbook documentation,,Alerts configured,,8,,,Phase 4,Medium,Not Started,13
+Cost analysis report,,Performance benchmarking,,4,,,Phase 2,Medium,Not Started,8
+API authentication (VSCode),,VSCode scaffold,,6,,,Phase 3,High,Not Started,11
+Caching strategy tuning,,Query optimization,,8,,,Phase 4,High,Not Started,15
+Backup/restore testing,,Backups configured,,6,,,Phase 4,High,Not Started,16
+Penetration testing (external firm),,Phase 3 complete,,16,,,Phase 4,Critical,Not Started,14
+Review Selection command (VSCode),,VSCode scaffold,,10,,,Phase 3,High,Not Started,11
+Notion API client,,Phase 2 complete,,8,,,Phase 3,High,Not Started,9
+ELK/Loki logging pipeline,,Phase 3 complete,,12,,,Phase 4,Critical,Not Started,13
+Database query optimization,,Production data,,12,,,Phase 4,High,Not Started,15
+Integration testing (all systems),,All integrations done,,10,,,Phase 3,Critical,Not Started,12
+Sync endpoint /reviews/{id}/export/notion,,Schema mapping,,10,,,Phase 3,High,Not Started,9
+Bidirectional sync logic,,Sync endpoint,,10,,,Phase 3,Medium,Not Started,9
+OAuth flow for users (GitHub),,GitHub App,,8,,,Phase 3,High,Not Started,10
+Launch announcement,,Rollout successful,,4,,,Phase 4,High,Not Started,16
+Quality scoring (6 dimensions),,Aggregation complete,,8,,,Phase 2,High,Not Started,7
+Cost optimization review,,Load testing,,6,,,Phase 4,Medium,Not Started,15
+User migration to Phase 2,,A/B testing,,10,,,Phase 2,Critical,Not Started,8
+JSON manifest export,,Quality scoring,,6,,,Phase 2,Medium,Not Started,7
+Performance benchmarking,,Migration,,6,,,Phase 2,High,Not Started,8
+Post-launch retrospective,,Launch complete,,4,,,Phase 4,Medium,Not Started,16
+Status display in sidebar (VSCode),,VSCode scaffold,,8,,,Phase 3,Medium,Not Started,11
+Final load testing,,All optimizations,,10,,,Phase 4,Critical,Not Started,16
+Markdown summary export,,Quality scoring,,6,,,Phase 2,Medium,Not Started,7
+GitHub App creation,,Phase 2 complete,,8,,,Phase 3,Critical,Not Started,10
+Test code generation,,Aggregation complete,,10,,,Phase 2,High,Not Started,7
+OpenTelemetry tracing,,Logging pipeline,,10,,,Phase 4,High,Not Started,13
+GDPR compliance review,,Security audit,,8,,,Phase 4,High,Not Started,14
+Export Phase 0 data,,None,,6,,,Phase 3,Medium,Not Started,12
+Load testing (1000 concurrent),,Optimization complete,,10,,,Phase 4,Critical,Not Started,15
+User documentation,,Integrations stable,,8,,,Phase 3,High,Not Started,12
+Video tutorials,,Documentation,,6,,,Phase 3,Medium,Not Started,12
+Rate limiting (Redis-based),,None,,6,,,Phase 4,High,Not Started,14
